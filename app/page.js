@@ -33,19 +33,13 @@ export default function Home() {
           placeholder={"Enter password"}
           type={displayPassword ? "text" : "password"}
           endIcon={
-            displayPassword ? (
-              <FaRegEyeSlash
-                size={20}
-                className="cursor-pointer"
-                onClick={() => setDisplayPassword(true)}
-              />
-            ) : (
-              <FaRegEye
-                size={20}
-                className="cursor-pointer"
-                onClick={() => setDisplayPassword(false)}
-              />
-            )
+            <button onClick={() => setDisplayPassword(!displayPassword)}>
+              {displayPassword ? (
+                <FaRegEyeSlash size={20} />
+              ) : (
+                <FaRegEye size={20} />
+              )}
+            </button>
           }
         />
         <div className="text-end w-full">Forgot Password?</div>
