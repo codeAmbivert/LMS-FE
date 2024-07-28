@@ -5,7 +5,9 @@ import { TbMail } from "react-icons/tb";
 import Button from "./components/Button";
 import Link from "next/link";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Loader from "./components/Loader";
+import Image from "next/image";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,14 +15,35 @@ const poppins = Poppins({
 });
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
   const [displayPassword, setDisplayPassword] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <main
       className={`${poppins.className} flex justify-center items-center min-h-screen`}
     >
+      <Image
+        src="/LERNA.svg"
+        alt="logo"
+        className="fixed top-5 sm:top-10 left-5 sm:left-10"
+        width={200}
+        height={200}
+      />
       <div className="flex flex-col items-center gap-5 p-5 max-w-md w-full">
-        <h2 className={`text-3xl font-extrabold`}>Log In</h2>
-        <p className="text-gray-500">
+        <h2 className={`text-3xl text-lmsBlack font-extrabold`}>Log In</h2>
+        <p className="text-lmsGrayText mb-5">
           Enter your credentials to access your account
         </p>
         <InputField
@@ -42,15 +65,16 @@ export default function Home() {
             </button>
           }
         />
-        <Link href="forgot-password" className="text-end w-full">
+        <Link
+          href="forgot-password"
+          className="text-end w-full text-lmsPrimary text-sm font-medium"
+        >
           Forgot Password?
         </Link>
-        <Button bgColor="bg-blue-600" extraClass="mt-3 w-full">
-          Log into account
-        </Button>
-        <p>
+        <Button extraClass="mt-3 w-full">Log into account</Button>
+        <p className="text-lmsGrayText">
           Are you new here?{" "}
-          <Link href="/sign-up" className="font-medium">
+          <Link href="/sign-up" className="font-medium text-lmsPrimary">
             Create Account
           </Link>
         </p>
