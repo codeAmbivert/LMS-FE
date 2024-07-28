@@ -1,11 +1,18 @@
-const Button = ({ children, onClick, bgColor, extraClass, disabled }) => {
+const Button = ({
+  children,
+  onClick,
+  bgColor,
+  extraClass,
+  disabled,
+  textColor,
+}) => {
   return (
     <button
       className={`${
         bgColor ? bgColor : "bg-lmsPrimary"
-      } py-3 px-10 font-medium ${
-        extraClass && extraClass
-      } rounded-md text-white focus:outline-none relative ${
+      } py-3 px-10 font-medium ${extraClass && extraClass} rounded-md ${
+        textColor ? textColor : "text-white"
+      } focus:outline-none relative ${
         disabled ? "cursor-not-allowed" : "cursor-pointer"
       }`}
       onClick={onClick}

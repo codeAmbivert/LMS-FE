@@ -3,6 +3,7 @@ import Button from "../Button";
 import InputField from "../InputField";
 import { LuPaperclip } from "react-icons/lu";
 import { FiTrash } from "react-icons/fi";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const EditResource = ({ open, onClose, id }) => {
   const [fileError, setFileError] = useState("");
@@ -74,6 +75,14 @@ const EditResource = ({ open, onClose, id }) => {
         className="bg-white rounded-md p-5 max-w-md w-full flex flex-col gap-5"
         onClick={(event) => event.stopPropagation()}
       >
+        <div className="flex justify-between items-center">
+          <p className="text-xl font-medium">Update Resource</p>
+          <IoMdCloseCircleOutline
+            size={30}
+            className="cursor-pointer text-red-500"
+            onClick={handleClose}
+          />
+        </div>
         <InputField
           name="courseTitle"
           label="course title"
@@ -140,13 +149,13 @@ const EditResource = ({ open, onClose, id }) => {
           )}
         </div>
 
-        <Button disabled={true}>Update Material</Button>
-        <button
+        <Button>Update Material</Button>
+        {/* <button
           className="text-sm font-medium text-lmsBlack uppercase text-center"
           onClick={handleClose}
         >
           cancel
-        </button>
+        </button> */}
       </div>
     </main>
   );
