@@ -51,11 +51,11 @@ const Navbar = () => {
       >
         <span className="md:hidden">
           {item?.title === "Dashboard" ? (
-            <TiHomeOutline size={35} />
+            <TiHomeOutline size={25} />
           ) : item?.title === "Past Questions" ? (
-            <IoMdPaper size={35} />
+            <IoMdPaper size={25} />
           ) : (
-            <FaRegBookmark size={28} />
+            <FaRegBookmark size={20} />
           )}
         </span>
         <span className="hidden md:inline">
@@ -79,7 +79,7 @@ const Navbar = () => {
       <button
         className={`p-2 rounded-md hover:bg-gray-50 text-start flex gap-2 items-center`}
       >
-        <IoMdLogOut size={35} className="md:hidden" />
+        <IoMdLogOut size={25} className="md:hidden" />
         <IoMdLogOut size={20} className="hidden md:inline" />
       </button>
     </main>
