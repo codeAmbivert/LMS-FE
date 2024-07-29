@@ -1,9 +1,9 @@
-const DashboardCards = ({ title, icon, iconFunc, count }) => {
+const DashboardCards = ({ title, icon, count }) => {
   return (
     <div className="shadow-lg rounded-lg p-5 w-full">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-5">
         <p className="text-xl">{title}</p>
-        <div onClick={iconFunc}>{icon}</div>
+        <div className="p-1 rounded-md bg-lmsBlack text-white">{icon}</div>
       </div>
       <p className="text-lmsGrayText mt-5">{count}</p>
     </div>

@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { TiHomeOutline } from "react-icons/ti";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +9,6 @@ import { FaRegBookmark } from "react-icons/fa";
 const links = [
   {
     title: "Dashboard",
-    // icon: `<TiHomeOutline size={20/>`,
     link: {
       admin: "/admin/dashboard",
       lecturer: "/lecturer/dashboard",
@@ -34,7 +32,7 @@ const links = [
   },
 ];
 
-const Sidebar = () => {
+const Navbar = () => {
   const pathname = usePathname();
   const [tag, setTag] = useState("student");
 
@@ -51,7 +49,16 @@ const Sidebar = () => {
             : "hover:bg-gray-50"
         }`}
       >
-        <span>
+        <span className="md:hidden">
+          {item?.title === "Dashboard" ? (
+            <TiHomeOutline size={35} />
+          ) : item?.title === "Past Questions" ? (
+            <IoMdPaper size={35} />
+          ) : (
+            <FaRegBookmark size={28} />
+          )}
+        </span>
+        <span className="hidden md:inline">
           {item?.title === "Dashboard" ? (
             <TiHomeOutline size={20} />
           ) : item?.title === "Past Questions" ? (
@@ -60,31 +67,23 @@ const Sidebar = () => {
             <FaRegBookmark size={17} />
           )}
         </span>
-        <span>{item.title}</span>
+        <span className="hidden md:inline">{item.title}</span>
       </Link>
     ));
   };
 
   return (
-    <main className="p-5 w-full h-screen">
-      <Image
-        src="/LERNA.svg"
-        alt="logo"
-        // className="fixed top-5 sm:top-10 left-5 sm:left-10"
-        width={200}
-        height={200}
-      />
-      <div className="h-full pt-14  flex flex-col justify-between">
-        <div className="flex flex-col gap-5">{renderLink()}</div>
-        <button
-          className={`p-2 rounded-md hover:bg-gray-50 text-start mb-10 flex gap-2 items-center`}
-        >
-          Logout
-          <IoMdLogOut size={20} />
-        </button>
-      </div>
+    <main className="p-5 w-full flex justify-around items-center border-t bg-white">
+      {renderLink()}
+
+      <button
+        className={`p-2 rounded-md hover:bg-gray-50 text-start flex gap-2 items-center`}
+      >
+        <IoMdLogOut size={35} className="md:hidden" />
+        <IoMdLogOut size={20} className="hidden md:inline" />
+      </button>
     </main>
   );
 };
 
-export default Sidebar;
+export default Navbar;
