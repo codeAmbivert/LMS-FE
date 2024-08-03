@@ -63,7 +63,7 @@ const SavedMaterials = () => {
             </div>
             <div className="flex gap-5 mt-5">
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "first"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -73,7 +73,7 @@ const SavedMaterials = () => {
                 Harmattan Semester(1st)
               </button>
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "second"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -86,14 +86,12 @@ const SavedMaterials = () => {
 
             {semester === "first" && (
               <div className="mt-5">
-                First
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
               </div>
             )}
 
             {semester === "second" && (
               <div className="mt-5">
-                Second
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
               </div>
             )}

@@ -7,12 +7,15 @@ import { Sora } from "next/font/google";
 import DashboardCards from "@/app/components/dashboard/DashboardCard";
 import { BiPlusCircle } from "react-icons/bi";
 import Header from "@/app/components/layout/Header";
+import ResourceUpload from "@/app/components/dashboard/ResourceUploadModal";
+import PastQuestionUpload from "@/app/components/dashboard/PastQuestionUploadModal";
 
 const sora = Sora({ subsets: ["latin"] });
 
 const PastQuestions = () => {
   const [loading, setLoading] = useState(true);
   const [semester, setSemester] = useState("by me");
+  const [openResourceUpload, setResourceUpload] = useState(false);
   console.log(semester);
 
   useEffect(() => {
@@ -65,17 +68,17 @@ const PastQuestions = () => {
             </div>
             <div className="flex gap-5 mt-5">
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "by me"
                     ? "border-lmsPrimary"
                     : "border-transparent"
                 }`}
                 onClick={() => setSemester("by me")}
               >
-                Uploaded By Me
+                My Uploads
               </button>
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "first"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -85,7 +88,7 @@ const PastQuestions = () => {
                 Harmattan Semester(1st)
               </button>
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "second"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -98,26 +101,29 @@ const PastQuestions = () => {
 
             {semester === "by me" && (
               <div className="mt-5">
-                Uploaded by me
-                <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
+                <ResourceCard
+                  name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C"
+                  updateBtns={true}
+                />
               </div>
             )}
             {semester === "first" && (
               <div className="mt-5">
-                First
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
               </div>
             )}
 
             {semester === "second" && (
               <div className="mt-5">
-                Second
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
               </div>
             )}
           </div>
         </div>
-        {/* <ResourceUpload open={openResourceUpload} onClose={setResourceUpload} /> */}
+        <PastQuestionUpload
+          open={openResourceUpload}
+          onClose={setResourceUpload}
+        />
       </Layout>
     </>
   );

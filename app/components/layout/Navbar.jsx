@@ -73,7 +73,7 @@ const Navbar = () => {
   };
 
   return (
-    <main className="p-5 w-full flex justify-around items-center border-t bg-white">
+    <main className="p-3 w-full flex justify-around items-center border-t bg-white">
       {renderLink()}
 
       <button

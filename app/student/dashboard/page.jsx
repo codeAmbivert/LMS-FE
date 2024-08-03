@@ -63,7 +63,7 @@ const StudentDashboard = () => {
             </div>
             <div className="flex gap-5 mt-5">
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "first"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -73,7 +73,7 @@ const StudentDashboard = () => {
                 Harmattan Semester(1st)
               </button>
               <button
-                className={`border-b-2 ${
+                className={`text-sm sm:text-base border-b-2 ${
                   semester === "second"
                     ? "border-lmsPrimary"
                     : "border-transparent"
@@ -86,7 +86,6 @@ const StudentDashboard = () => {
 
             {semester === "first" && (
               <div className="mt-5">
-                First
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
@@ -112,7 +111,6 @@ const StudentDashboard = () => {
 
             {semester === "second" && (
               <div className="mt-5">
-                Second
                 <ResourceCard name="CSC 405  SOFTWARE ENGINEERING (3 UNITS) - C" />
               </div>
             )}

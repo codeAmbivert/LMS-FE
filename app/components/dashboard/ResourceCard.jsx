@@ -6,9 +6,9 @@ import DeleteResource from "./DeleteResourceModal";
 
 const sora = Sora({ subsets: ["latin"] });
 
-const ResourceCard = ({ icon, name, id }) => {
+const ResourceCard = ({ icon, name, id, updateBtns }) => {
   const [openResourceUpdate, setResourceUpdate] = useState(false);
-  const [openResourceDelete, setResourceDelete] = useState(false);
+  const [openResourceDelete, setResourceDelete] = useState(false);  
 
   const handle = () => {
     console.log(id);
@@ -20,32 +20,36 @@ const ResourceCard = ({ icon, name, id }) => {
       </div>
       <div>
         <p className={`${sora.className}`}>{name}</p>
-        <div className="flex gap-5 mt-3">
-          <button
-            className="flex gap-1"
-            onClick={() => setResourceUpdate(true)}
-          >
-            Edit
-          </button>
-          <button
-            className="flex gap-1"
-            onClick={() => setResourceDelete(true)}
-          >
-            Delete
-          </button>
-        </div>
+        {updateBtns ? (
+          <div className="flex gap-5 mt-3">
+            <button
+              className="flex gap-1"
+              onClick={() => setResourceUpdate(true)}
+            >
+              Edit
+            </button>
+            <button
+              className="flex gap-1"
+              onClick={() => setResourceDelete(true)}
+            >
+              Delete
+            </button>
+          </div>
+        ) : null}
       </div>
-      <EditResource
-        open={openResourceUpdate}
-        onClose={setResourceUpdate}
-        id={id}
-      />
-      <DeleteResource
-        open={openResourceDelete}
-        onClose={setResourceDelete}
-        name={name}
-        id={id}
-      />
+      <div>
+        <EditResource
+          open={openResourceUpdate}
+          onClose={setResourceUpdate}
+          id={id}
+        />
+        <DeleteResource
+          open={openResourceDelete}
+          onClose={setResourceDelete}
+          name={name}
+          id={id}
+        />
+      </div>
     </main>
   );
 };

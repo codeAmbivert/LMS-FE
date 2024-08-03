@@ -19,8 +19,8 @@ const Header = ({ backNav }) => {
         src="/LERNA.svg"
         alt="logo"
         // className="fixed top-5 sm:top-10 left-5 sm:left-10"
-        width={150}
-        height={150}
+        width={120}
+        height={120}
       />
     </nav>
   );
